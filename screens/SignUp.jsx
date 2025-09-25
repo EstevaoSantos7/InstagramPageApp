@@ -1,8 +1,16 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import Logo from '../assets/instaLogo.png';
 import Entypo from '@expo/vector-icons/Entypo';
+import { useNavigation } from "@react-navigation/native";
+import { useState } from 'react';
+
+
+
 
 export default function SignUp() {
+
+        const navigation = useNavigation();
+
     return (
         <View style={style.container}>
             <View style={style.containerCaixa}>
@@ -10,7 +18,7 @@ export default function SignUp() {
                     style={{ width: 270, height: 90, borderColor: "#0000" }}
                     source={Logo}
                 />
-                <Text style={{ fontSize: 20, width: 280, textAlign: "center", fontWeight: "600", color: "#686868ff" }}>
+                <Text style={{ fontSize: 20, width: 280, textAlign: "center", fontWeight: "600", color: "#858585ff" }}>
                     Cadastra-se para ver fotos e vídeos dos seus amigos.
                 </Text>
 
@@ -37,11 +45,21 @@ export default function SignUp() {
                 <View style={style.linhaSenha}>
                     <TextInput style={style.campo} placeholder="Senha" />
                 </View>
-                <TouchableOpacity>
-                    <Text>Cadastrar-se</Text>
+                <TouchableOpacity style={{backgroundColor:"#87e7ffff", color:"#fff", padding:10, width:260, alignItems:"center", borderRadius:6}}>
+                    <Text style={{color:"#fff"}}>Cadastrar-se</Text>
                 </TouchableOpacity>
+                <View style={{gap:0,alignItems:"center" , marginBottom:20}}>
+                    <Text style={{fontSize:12, color:"#858585ff"}}>Ao se cadastrar, você concordava com nossos</Text>
+                <Text style={{fontWeight:600, fontSize:12, color:"#858585ff"}}>Termos, Política de Dados e Política de Cookies.</Text>
+                </View>
             </View>
-        </View>
+            <View style={style.containerCaixaBaixo}>
+<TouchableOpacity style={style.caixinha} onPress={() => navigation.navigate("Login")}>
+                    <Text >Tem uma Conta? <Text style={{color:"#097db3ff"}}>Conecte-se</Text></Text>
+                </TouchableOpacity>
+
+            </View>
+        </View >
     );
 }
 
@@ -50,7 +68,8 @@ const style = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         flex: 1,
-        backgroundColor: "#fff"
+        backgroundColor: "#fff",
+        gap: 12,
     },
     containerCaixa: {
         borderWidth: 0.5,
@@ -58,14 +77,24 @@ const style = StyleSheet.create({
         padding: 12,
         justifyContent: "center",
         alignItems: "center",
-        gap: 10
+        gap: 10,
+        width: "80%",
+    },
+    containerCaixaBaixo: {
+        borderWidth: 0.5,
+        borderColor: "#989898ff",
+        padding: 14,
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 10,
+        width: "80%",
     },
     botaoFace: {
         width: 270,
         flexDirection: "row",
         alignItems: "center",
         gap: 5,
-        backgroundColor: "#0783ffff",
+        backgroundColor: "#2391ffff",
         color: "#fff",
         padding: 10,
         borderRadius: 6,
@@ -89,8 +118,9 @@ const style = StyleSheet.create({
         width: 270,
         height: 45,
         borderWidth: 1,
-        borderColor: "#b0b0b0ff",
+        borderColor: "#b6b6b6ff",
         paddingLeft: 10,
-        borderRadius: 5
+        borderRadius: 5,
+        backgroundColor:"#f7f7f7ff"
     }
 });
